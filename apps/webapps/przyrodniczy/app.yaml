@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: ./basic
+      chart: ./chart
       sourceRef:
         kind: GitRepository
         name: homelab-app-chart
