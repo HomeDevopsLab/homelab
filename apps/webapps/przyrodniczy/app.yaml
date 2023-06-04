@@ -42,7 +42,12 @@ spec:
       requests:
         memory: "250Mi"
         cpu: "200m"
+    services:
+      - name: http
+        servicePort: 80
+        targetPort: 80
     ingress:
+      enabled: true
       ssl: true
       hosts:
         - host: przyrodniczy.website
