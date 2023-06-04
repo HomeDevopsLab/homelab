@@ -1,0 +1,48 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: www
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./basic
+      sourceRef:
+        kind: GitRepository
+        name: homelab-app-chart
+        namespace: default
+      interval: 1m
+  values:
+    application:
+      type: wordpress
+    replicaCount: 1
+    image:
+      repository: devkrolikowski/wordpress-generic
+      tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "600m"
+      requests:
+        memory: "250Mi"
+        cpu: "200m"
+    ingress:
+      ssl: true
+      hosts:
+        - host: przyrodniczy.website
+      tls:
+        - hosts:
+            - przyrodniczy.website
+    volumes:
+      volumes:
+      enabled: true
+      mountPath:
+        - html:/var/www/html
+      ownership: 1024:100
+      type:
+        nfs:
+          server: lab-storage.lan
+          path: /volume1/storagelab
+    database:
+      enabled: true
