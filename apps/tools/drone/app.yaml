@@ -77,3 +77,5 @@ spec:
         nfs:
           server: lab-storage.lan
           path: /volume1/storagelab
+    deployNotifications:
+      enabled: false
