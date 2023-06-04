@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backups
+  namespace: default
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: backup-job
+              image: gitea.angrybits.pl/kkrolikowski/backups:2.2.0
+              imagePullPolicy: IfNotPresent
+              command: ["/opt/app/backup.sh"]
+              volumeMounts:
+                - mountPath: /storage
+                  subPath: homelab
+                  name: backup-vol
+                - mountPath: /storagelab
+                  name: storagelab-vol
+              env:
+                - name: MYSQL_DB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: dbadmin
+                      key: login
+                - name: MYSQL_DB_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      name: dbadmin
+                      key: password
+                - name: MYSQL_DB_HOST
+                  value: lab-helper.lan
+                - name: PG_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: cron-secrets
+                      key: pguser
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: cron-secrets
+                      key: pgpass
+                - name: PG_HOST
+                  value: lab-helper.lan
+          volumes:
+            - name: backup-vol
+              nfs:
+                server: lab-storage.lan
+                path: /volume1/warez/Backups
+                readOnly: false
+            - name: storagelab-vol
+              nfs:
+                server: lab-storage.lan
+                path: /volume1/storagelab
+                readOnly: true
+          restartPolicy: OnFailure
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
