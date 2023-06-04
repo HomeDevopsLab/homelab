@@ -20,6 +20,21 @@ spec:
     image:
       repository: devkrolikowski/wordpress-generic
       tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
+    env:
+      - name: WORDPRESS_DB_HOST
+        value: lab-helper.lan
+      - name: WORDPRESS_DB_USER
+        valueFrom:
+          secretKeyRef:
+            name: przyrodniczy-www-db
+            key: login
+      - name: WORDPRESS_DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: przyrodniczy-www-db
+            key: password
+      - name: WORDPRESS_DB_NAME
+        value: przyrodniczy
     resources:
       limits:
         memory: "512Mi"
