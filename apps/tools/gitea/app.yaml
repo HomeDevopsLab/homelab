@@ -50,8 +50,8 @@ spec:
         memory: "2Gi"
         cpu: "2"
       requests:
-        memory: 512Mi
-        cpu: 500m
+        memory: 1Gi
+        cpu: 200m
     services:
       - name: http
         servicePort: 80
