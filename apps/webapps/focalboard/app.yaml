@@ -47,8 +47,8 @@ spec:
       ownership: 1024:100
       type:
         nfs:
-          server: lab-storage.lan
-          path: /volume1/storagelab
+          server: srv-nfs.lan
+          path: /storage
     deployNotifications:
       enabled: true
       image: gitea.angrybits.pl/kkrolikowski/mattermost-notify:0.0.3
