@@ -76,5 +76,5 @@ spec:
       ownership: 1024:100
       type:
         nfs:
-          server: lab-storage.lan
-          path: /volume1/storagelab
+          server: srv-nfs.lan
+          path: /storage
