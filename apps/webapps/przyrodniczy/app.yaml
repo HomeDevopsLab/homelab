@@ -59,7 +59,7 @@ spec:
       enabled: true
       mountPath:
         - html:/var/www/html
-      ownership: 1024:100
+      ownership: 33:33
       type:
         nfs:
           server: srv-nfs.lan
