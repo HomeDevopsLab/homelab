@@ -32,7 +32,7 @@ spec:
                       name: dbadmin
                       key: password
                 - name: MYSQL_DB_HOST
-                  value: lab-helper.lan
+                  value: srv-db.lan
                 - name: PG_USER
                   valueFrom:
                     secretKeyRef:
@@ -44,7 +44,7 @@ spec:
                       name: cron-secrets
                       key: pgpass
                 - name: PG_HOST
-                  value: lab-helper.lan
+                  value: srv-db.lan
           volumes:
             - name: backup-vol
               nfs:
