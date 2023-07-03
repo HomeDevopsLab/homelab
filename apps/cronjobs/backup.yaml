@@ -53,8 +53,8 @@ spec:
                 readOnly: false
             - name: storagelab-vol
               nfs:
-                server: lab-storage.lan
-                path: /volume1/storagelab
+                server: srv-nfs.lan
+                path: /storage
                 readOnly: true
           restartPolicy: OnFailure
   successfulJobsHistoryLimit: 1
