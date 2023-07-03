@@ -22,7 +22,7 @@ spec:
       tag: 0.1.0 # {"$imagepolicy": "flux-system:przyrodniczy:tag"}
     env:
       - name: WORDPRESS_DB_HOST
-        value: lab-helper.lan
+        value: srv-db.lan
       - name: WORDPRESS_DB_USER
         valueFrom:
           secretKeyRef:
