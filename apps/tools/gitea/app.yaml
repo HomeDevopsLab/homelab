@@ -28,7 +28,7 @@ spec:
       - name: GITEA__database__DB_TYPE
         value: mysql
       - name: GITEA__database__HOST
-        value: lab-helper.lan:3306
+        value: srv-db.lan:3306
       - name: GITEA__database__NAME
         value: gitea
       - name: GITEA__database__USER
