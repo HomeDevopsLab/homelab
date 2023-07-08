@@ -31,9 +31,10 @@ data:
           - "alertmanager.monitoring.svc:9093"
 
     scrape_configs:
-      - job_name: 'lab-helper'
+      - job_name: 'proxmox'
+        metrics_path: /pve
         static_configs:
-          - targets: ['lab-helper.lan:9100']
+        - targets: ['proxmox.lan:9221']
       - job_name: 'basen_stats'
         scrape_interval: 60s
         static_configs:
