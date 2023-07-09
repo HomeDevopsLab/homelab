@@ -20,29 +20,29 @@ spec:
     image:
       repository: juanluisbaptiste/postfix
       tag: "1.7.1"
-    env:
-      - name: SMTP_SERVER
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: smtp_server
-      - name: SERVER_HOSTNAME
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: server_hostname
-      - name: SMTP_PORT
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: smtp_port
-      - name: SMTP_NETWORKS
-        valueFrom:
-          secretKeyRef:
-            name: smtp-secret
-            key: networks
-      - name: ALWAYS_ADD_MISSING_HEADERS
-        value: "true"
+    # env:
+    #   - name: SMTP_SERVER
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: smtp-secret
+    #         key: smtp_server
+    #   - name: SERVER_HOSTNAME
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: smtp-secret
+    #         key: server_hostname
+    #   - name: SMTP_PORT
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: smtp-secret
+    #         key: smtp_port
+    #   - name: SMTP_NETWORKS
+    #     valueFrom:
+    #       secretKeyRef:
+    #         name: smtp-secret
+    #         key: networks
+    #   - name: ALWAYS_ADD_MISSING_HEADERS
+    #     value: "true"
     resources:
       limits:
         memory: "1024Mi"
