@@ -64,9 +64,9 @@ spec:
       enabled: true
       configMaps:
         - name: smtp-service-config
-          mode: 644
+          mode: 0644
         - name: smtp-service-sasl-password
-          mode: 600
+          mode: 0600
       configMounts:
         - smtp-service-config:/etc/postfix
         - smtp-service-sasl-password:/etc/postfix
