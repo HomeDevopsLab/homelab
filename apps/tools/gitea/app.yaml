@@ -45,6 +45,18 @@ spec:
         value: "true"
       - name: GITEA__service__REQUIRE_SIGNIN_VIEW
         value: "true"
+      - name: GITEA__mailer__ENABLED
+        value: "true"
+      - name: GITEA__mailer__FROM
+        value: "gitea@angrybits.pl"
+      - name: GITEA__mailer__MAILER_TYPE
+        value: "smtp"
+      - name: GITEA__mailer__SMTP_ADDR
+        value: "smtp-service-smtp-svc.default.svc.cluster.local"
+      - name: GITEA__mailer__SMTP_PORT
+        value: "25"
+      - name: GITEA__mailer__IS_TLS_ENABLED
+        value: "false"
     resources:
       limits:
         memory: "2Gi"
