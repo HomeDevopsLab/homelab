@@ -57,7 +57,7 @@ spec:
     ingress:
       enabled: false
     volumes:
-      enabled: false
+      enabled: true
     startupProbes:
       enabled: false
     config:
