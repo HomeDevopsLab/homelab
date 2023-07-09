@@ -68,5 +68,4 @@ spec:
         - name: smtp-service-sasl-password
           mode: 0600
       configMounts:
-        - smtp-service-config:/etc/postfix/main.conf
-        - smtp-service-sasl-password:/etc/postfix/sasl_passwd
+        - smtp-service-config:/etc/postfix
