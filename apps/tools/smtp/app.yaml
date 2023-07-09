@@ -62,7 +62,7 @@ spec:
             name: smtp-secret
             key: smtp_pass
       - name: ALWAYS_ADD_MISSING_HEADERS
-        value: "true"
+        value: "yes"
     resources:
       limits:
         memory: "1024Mi"
