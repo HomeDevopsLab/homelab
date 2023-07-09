@@ -45,6 +45,8 @@ spec:
         value: "true"
       - name: GITEA__service__REQUIRE_SIGNIN_VIEW
         value: "true"
+      - name: GITEA__service__ENABLE_NOTIFY_MAIL
+        value: "true"
       - name: GITEA__mailer__ENABLED
         value: "true"
       - name: GITEA__mailer__FROM
