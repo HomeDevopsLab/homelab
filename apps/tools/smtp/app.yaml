@@ -20,29 +20,49 @@ spec:
     image:
       repository: juanluisbaptiste/postfix
       tag: "1.7.1"
-    # env:
-    #   - name: SMTP_SERVER
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: smtp-secret
-    #         key: smtp_server
-    #   - name: SERVER_HOSTNAME
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: smtp-secret
-    #         key: server_hostname
-    #   - name: SMTP_PORT
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: smtp-secret
-    #         key: smtp_port
-    #   - name: SMTP_NETWORKS
-    #     valueFrom:
-    #       secretKeyRef:
-    #         name: smtp-secret
-    #         key: networks
-    #   - name: ALWAYS_ADD_MISSING_HEADERS
-    #     value: "true"
+    env:
+      - name: SMTP_SERVER
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_server
+      - name: SERVER_HOSTNAME
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: server_hostname
+      - name: SMTP_PORT
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_port
+      - name: SMTP_NETWORKS
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: networks
+      - name: SMTP_SERVER
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_server
+      - name: SMTP_PORT
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_port
+      - name: SMTP_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_login
+      - name: SMTP_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: smtp-secret
+            key: smtp_pass
+      - name: ALWAYS_ADD_MISSING_HEADERS
+        value: "true"
     resources:
       limits:
         memory: "1024Mi"
@@ -57,15 +77,6 @@ spec:
     ingress:
       enabled: false
     volumes:
-      enabled: true
+      enabled: false
     startupProbes:
       enabled: false
-    config:
-      enabled: true
-      configMaps:
-        - name: smtp-service-config
-          mode: 0644
-        - name: smtp-service-sasl-password
-          mode: 0600
-      configMounts:
-        - smtp-service-config:/etc/postfix
